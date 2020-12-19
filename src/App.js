@@ -10,7 +10,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 //Text Field
 import {TextField} from '@material-ui/core';
 //makeStyle for button
-import {makeStyles} from '@material-ui/core/styles';
+import {
+  makeStyles,
+  ThemeProvider,
+  createMuiTheme,
+} from '@material-ui/core/styles';
+import {green, orange, red} from '@material-ui/core/colors';
 
 const useStyle = makeStyles({
   root: {
@@ -19,6 +24,17 @@ const useStyle = makeStyles({
     marginBottom: 15,
     color: 'black',
     padding: '3px 30px',
+  },
+});
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: orange[500],
+    },
+    secondary: {
+      main: red[500],
+    },
   },
 });
 
@@ -49,35 +65,37 @@ const CheckboxExample = () => {
 
 function App() {
   return (
-    <div className='App'>
-      <ButtonStyled />
-      <TextField
-        variant='outlined'
-        color='secondary'
-        type='email' //time, date,.. can pass here
-        label='type email'
-        placeholder='test@test.com'
-      />
-      <CheckboxExample />
-      <ButtonGroup>
-        <Button
-          startIcon={<SaveIcon />}
-          color='primary'
-          size='large'
-          variant='contained'
-        >
-          save
-        </Button>
-        <Button
-          startIcon={<DeleteIcon />}
+    <ThemeProvider theme={theme}>
+      <div className='App'>
+        <ButtonStyled />
+        <TextField
+          variant='outlined'
           color='secondary'
-          size='large'
-          variant='contained'
-        >
-          Delete
-        </Button>
-      </ButtonGroup>
-    </div>
+          type='email' //time, date,.. can pass here
+          label='type email'
+          placeholder='test@test.com'
+        />
+        <CheckboxExample />
+        <ButtonGroup>
+          <Button
+            startIcon={<SaveIcon />}
+            color='primary'
+            size='large'
+            variant='contained'
+          >
+            save
+          </Button>
+          <Button
+            startIcon={<DeleteIcon />}
+            color='secondary'
+            size='large'
+            variant='contained'
+          >
+            Delete
+          </Button>
+        </ButtonGroup>
+      </div>
+    </ThemeProvider>
   );
 }
 
