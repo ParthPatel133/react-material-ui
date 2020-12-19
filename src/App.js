@@ -16,6 +16,8 @@ import {
   createMuiTheme,
 } from '@material-ui/core/styles';
 import {green, orange, red} from '@material-ui/core/colors';
+import 'fontsource-roboto';
+import Typography from '@material-ui/core/Typography';
 
 const useStyle = makeStyles({
   root: {
@@ -67,6 +69,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className='App'>
+        <Typography variant='h2' component='div'>
+          Welcome to Material Ui
+        </Typography>
         <ButtonStyled />
         <TextField
           variant='outlined'
